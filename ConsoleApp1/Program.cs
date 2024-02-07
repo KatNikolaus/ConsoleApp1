@@ -10,7 +10,7 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome to Ship Sink 1.5:");
+            Console.WriteLine("Welcome to Ship Sink 1.6:");
 
             while(true)
             {
@@ -54,22 +54,23 @@ namespace ConsoleApp1
             int[,] gfield = new int[config.f_dimy,config.f_dimx];
 
 
-            //Init Ships:
+            // Init Ships:
             Ship s1 = new Ship(config.f_dimx,config.f_dimy);
            
-
+            // Set Ship on gamefield
             for(int i=0; i<s1.Laength;i++)
             {
-                if ((int)s1.D == 0)
+                if ((int)s1.D == 0) // vertical dir
                     gfield[s1.Y + i,s1.X] = 1;
-                else if ((int)s1.D == 1)
+                else if ((int)s1.D == 1) // hor
                     gfield[s1.Y,s1.X + i] = 1;
-                else if ((int)s1.D == 2)
+                else if ((int)s1.D == 2) // dia leftuprightdown
                     gfield[s1.Y+i,s1.X+i] = 1;
-                else if ((int)s1.D == 3)
+                else if ((int)s1.D == 3) // dia rightupleftdown
                     gfield[s1.Y+i,s1.X-i] = 1;
             }
 
+            // Fills up the gamefieldarray with "0" everywhere isn't a shippart
             for(int i=0; i<config.f_dimy;i++)
             {
                 for(int j = 0;j < config.f_dimx;j++)
