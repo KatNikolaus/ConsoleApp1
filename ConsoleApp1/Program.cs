@@ -1,11 +1,10 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.Design;
-using System.Security.Cryptography;
 
 namespace ConsoleApp1
 {
-    enum direction { vertical=0, horizontal=1 , dia_leftuprightdown= 2, dia_rightupleftdown=3 }
-    enum ship_type { Aircraft_Carrier=5, Battleship=4, Destroyer=3, Patrol_Boat=2, Boat=1 }
+    enum Direction { vertical=0, horizontal=1 , dia_leftuprightdown= 2, dia_rightupleftdown=3 }
+    enum Ship_type { Aircraft_Carrier=5, Battleship=4, Destroyer=3, Patrol_Boat=2, Boat=1 }
 
     internal class Program
     {
@@ -59,16 +58,16 @@ namespace ConsoleApp1
             Ship s1 = new Ship(config.f_dimx,config.f_dimy);
            
 
-            for(int i=0; i<s1.laength;i++)
+            for(int i=0; i<s1.Laength;i++)
             {
-                if ((int)s1.d == 0)
-                    gfield[s1.y + i,s1.x] = 1;
-                else if ((int)s1.d == 1)
-                    gfield[s1.y,s1.x + i] = 1;
-                else if ((int)s1.d == 2)
-                    gfield[s1.y+i,s1.x+i] = 1;
-                else if ((int)s1.d == 3)
-                    gfield[s1.y+i,s1.x-i] = 1;
+                if ((int)s1.D == 0)
+                    gfield[s1.Y + i,s1.X] = 1;
+                else if ((int)s1.D == 1)
+                    gfield[s1.Y,s1.X + i] = 1;
+                else if ((int)s1.D == 2)
+                    gfield[s1.Y+i,s1.X+i] = 1;
+                else if ((int)s1.D == 3)
+                    gfield[s1.Y+i,s1.X-i] = 1;
             }
 
             for(int i=0; i<config.f_dimy;i++)
@@ -80,7 +79,7 @@ namespace ConsoleApp1
                 }
             }
 
-            win = s1.laength;
+            win = s1.Laength;
 
             while (p1.Score + p2.Score <= win || count > config.f_dimx*config.f_dimy+5)
             {

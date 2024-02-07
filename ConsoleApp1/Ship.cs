@@ -9,39 +9,47 @@ namespace ConsoleApp1
 
     internal class Ship
     {
-        public ship_type stype { get; set; }
-        public int x { get; set; }
-        public int y { get; set; }
-        public direction d { get; set; }
-        public int laength { get; set; }
+        public Ship_type Stype { get; set; }
+        public int X { get; set; }
+        public int Y { get; set; }
+        public Direction D { get; set; }
+        public int Laength { get; set; }
 
 
         public Ship(int f_dimx,int f_dimy)
         {
-            Random r1 = new Random(5);
+            Random r1 = new Random();
             Random r2 = new Random();
-            Random r3 = new Random(4);
+            Random r3 = new Random();
 
-            if (r1.Next() <= 1)
-                this.stype = ship_type.Boat;
-            else if (r1.Next() <= 2)
-                this.stype = ship_type.Patrol_Boat;
-            else if (r1.Next() <= 3)
-                this.stype = ship_type.Destroyer;
-            else if (r1.Next() <= 4)
-                this.stype = ship_type.Battleship;
-            else if (r1.Next() <= 5)
-                this.stype = ship_type.Aircraft_Carrier;
-            this.x = r2.Next(f_dimx);
-            this.y = r2.Next(f_dimy);
-            if (r3.Next() < 1)
-                this.d = direction.vertical;
-            if (r3.Next() < 2)
-                this.d = direction.horizontal;
-            if (r3.Next() < 3)
-                this.d = direction.dia_leftuprightdown;
-            if (r3.Next() < 4)
-                this.d = direction.dia_rightupleftdown;
+            int typ = r1.Next(5);
+
+            if (typ <= 1)
+                this.Stype = Ship_type.Boat;
+            else if (typ <= 2)
+                this.Stype = Ship_type.Patrol_Boat;
+            else if (typ <= 3)
+                this.Stype = Ship_type.Destroyer;
+            else if (typ <= 4)
+                this.Stype = Ship_type.Battleship;
+            else if (typ <= 5)
+                this.Stype = Ship_type.Aircraft_Carrier;
+
+            this.X = r2.Next(f_dimx);
+            this.Y = r2.Next(f_dimy);
+
+            int d = r3.Next(5);
+
+            if (d < 1)
+                this.D = Direction.vertical;
+            else if (d < 2)
+                this.D = Direction.horizontal;
+            else if (d < 3)
+                this.D = Direction.dia_leftuprightdown;
+            else if (d < 4)
+                this.D = Direction.dia_rightupleftdown;
+
+            this.Laength = (int) this.Stype;
         }
 
     }
